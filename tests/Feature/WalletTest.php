@@ -10,6 +10,8 @@ use App\Transfer;
 
 class WalletTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic feature test example.
      *
@@ -18,12 +20,10 @@ class WalletTest extends TestCase
     public function testGetWallet()
     {
         $wallet = factory(Wallet::class)->create();
-        $transfer = factory(Transfer::class, 3)->create([
+        $transfers = factory(Transfer::class, 3)->create([
             'wallet_id' => $wallet->id
         ]);
-
         $response = $this->json('GET', '/api/wallet');
-
         $response->assertStatus(200)
             ->assertJsonStructure([
                 'id', 'money', 'transfers' => [
@@ -32,7 +32,6 @@ class WalletTest extends TestCase
                     ]
                 ]
             ]);
-
         $this->assertCount(3, $response->json()['transfers']);
     }
 }
