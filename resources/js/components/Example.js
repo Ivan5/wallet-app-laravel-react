@@ -21,9 +21,31 @@ export default class Example extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
-        console.log("sending");
+        try {
+            let config = {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(this.state.form)
+            };
+            let response = await fetch(
+                "http://127.0.0.1:8000/api/transfer",
+                config
+            );
+            let data = await response.json();
+            this.setState({
+                transfers: this.state.transfers.concat(data),
+                money: this.state.money + parseInt(data.amount)
+            });
+        } catch (error) {
+            this.setState({
+                error
+            });
+        }
     }
 
     handleChange(e) {
