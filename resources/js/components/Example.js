@@ -10,8 +10,29 @@ export default class Example extends Component {
         this.state = {
             money: 0.0,
             transfers: [],
-            error: null
+            error: null,
+            form: {
+                description: "",
+                amount: "",
+                wallet_id: 3
+            }
         };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log("sending");
+    }
+
+    handleChange(e) {
+        this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            }
+        });
     }
 
     async componentDidMount() {
@@ -37,7 +58,11 @@ export default class Example extends Component {
                         <p className="title">$ {this.state.money}</p>
                     </div>
                     <div className="col-md-12">
-                        <TransferForm />
+                        <TransferForm
+                            form={this.state.form}
+                            onChange={this.handleChange}
+                            onSubmit={this.handleSubmit}
+                        />
                     </div>
                 </div>
                 <div className="m-t-md">

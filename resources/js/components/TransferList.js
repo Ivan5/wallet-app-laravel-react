@@ -6,7 +6,11 @@ const TransferList = ({ transfers }) => (
             {transfers.map(transfer => (
                 <tr key={transfer.id}>
                     <td>{transfer.description}</td>
-                    <td className="{transfer.amount > 0 ? 'text-success' : 'text-danger'}">
+                    <td
+                        className={
+                            transfer.amount > 0 ? "text-success" : "text-danger"
+                        }
+                    >
                         {transfer.amount}
                     </td>
                 </tr>
