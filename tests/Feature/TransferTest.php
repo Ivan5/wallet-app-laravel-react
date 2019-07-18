@@ -20,26 +20,22 @@ class TransferTest extends TestCase
     {
         $wallet = factory(Wallet::class)->create();
         $transfer = factory(Transfer::class)->make();
-
         $response = $this->json('POST', '/api/transfer', [
             'description' => $transfer->description,
             'amount' => $transfer->amount,
             'wallet_id' => $wallet->id
         ]);
-
         $response->assertJsonStructure([
             'id', 'description', 'amount', 'wallet_id'
         ])->assertStatus(201);
-
         $this->assertDatabaseHas('transfers', [
             'description' => $transfer->description,
             'amount' => $transfer->amount,
             'wallet_id' => $wallet->id
         ]);
-
-        $this->assertDatabaseHas('wallet', [
+        $this->assertDatabaseHas('wallets', [
             'id' => $wallet->id,
-            'money' => $wallet->money + $transfer->amount //ley de signos
+            'money' => $wallet->money + $transfer->amount
         ]);
     }
 }
