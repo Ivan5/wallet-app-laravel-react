@@ -62293,6 +62293,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _TransferForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TransferForm */ "./resources/js/components/TransferForm.js");
 /* harmony import */ var _TransferList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TransferList */ "./resources/js/components/TransferList.js");
+/* harmony import */ var _url__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../url */ "./resources/js/url.js");
 
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -62322,6 +62323,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -62376,7 +62378,7 @@ function (_Component) {
                   body: JSON.stringify(this.state.form)
                 };
                 _context.next = 5;
-                return fetch("http://127.0.0.1:8000/api/transfer", config);
+                return fetch("".concat(_url__WEBPACK_IMPORTED_MODULE_5__["default"], "/api/transfer"), config);
 
               case 5:
                 response = _context.sent;
@@ -62433,7 +62435,7 @@ function (_Component) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return fetch("http://127.0.0.1:8000/api/wallet");
+                return fetch("".concat(_url__WEBPACK_IMPORTED_MODULE_5__["default"], "/api/wallet"));
 
               case 3:
                 response = _context2.sent;
@@ -62584,6 +62586,20 @@ var TransferList = function TransferList(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TransferList);
+
+/***/ }),
+
+/***/ "./resources/js/url.js":
+/*!*****************************!*\
+  !*** ./resources/js/url.js ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var url = "http://127.0.0.1:8000";
+/* harmony default export */ __webpack_exports__["default"] = (url);
 
 /***/ }),
 

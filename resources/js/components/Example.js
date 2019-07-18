@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import TransferForm from "./TransferForm";
 import TransferList from "./TransferList";
+import url from "../url";
 
 export default class Example extends Component {
     constructor(props) {
@@ -32,10 +33,7 @@ export default class Example extends Component {
                 },
                 body: JSON.stringify(this.state.form)
             };
-            let response = await fetch(
-                "http://127.0.0.1:8000/api/transfer",
-                config
-            );
+            let response = await fetch(`${url}/api/transfer`, config);
             let data = await response.json();
             this.setState({
                 transfers: this.state.transfers.concat(data),
@@ -59,7 +57,7 @@ export default class Example extends Component {
 
     async componentDidMount() {
         try {
-            let response = await fetch("http://127.0.0.1:8000/api/wallet");
+            let response = await fetch(`${url}/api/wallet`);
             let data = await response.json();
             this.setState({
                 money: data.money,
